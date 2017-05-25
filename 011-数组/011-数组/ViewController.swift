@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        demo1()
+        demo2()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +22,58 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - 数组的遍历
+    func demo2() {
+        let array = ["张三", "小芳", "小羊"]
+        
+        // 1. 按照下标遍历
+        print("--- 按下标遍历")
+        for i in 0..<array.count {
+            print(array[i])
+        }
+        
+        // 2. for in 遍历元素
+        print("--- for in 遍历元素")
+        for s in array {
+            print(s)
+        }
+        
+        // 3. enum block 遍历，同时遍历下标和内容
+        print("--- enum block 遍历，同时遍历下标和内容")
+        for e in array.enumerated() {
+            print(e)
+            print("\(e.offset) \(e.element)")
+        }
+        
+        // 4. 遍历下标和内容2
+        // n 索引下标
+        // c [String] 数组 n 对应的 String 元素
+        // 其中 n/c 的名字可以随便写
+        print("--- 遍历下标和内容2")
+        for (n, c) in array.enumerated() {
+            print("\(n): '\(c)'")
+        }
+        
+        // 5. 反序遍历
+        print("--- 反序遍历")
+        for s in array.reversed() {
+            print(s)
+        }
+        
+        // 5. 反序索引&内容
+        print("---  反序索引&内容")
+        // 错误的反序，索引和内容不一致
+        for (n, s) in array.reversed().enumerated() {
+            print("\(n) \(s)")
+        }
+        
+        print("---  正确的反序")
+        // 先枚举，再反序
+        for (n, s) in array.enumerated().reversed() {
+            print("\(n) \(s)")
+        }
+    }
+    
     // MARK: - 数组的定义
     func demo1() {
         
