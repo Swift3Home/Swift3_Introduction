@@ -14,12 +14,79 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        demo2()
+        demo5()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - 数组的合并
+    func demo5() {
+        var array1 = ["张三", "小芳", "小羊"]
+        
+        let array2 = ["老李", "1", "2"]
+        
+        // 将array2 的内容合并到 array 中
+        // *** 注意：要合并数组的两个类型必须一致
+        array1 += array2
+        
+        print(array1)
+        
+        // [Stirng]
+        var array3: [NSObject] = ["张三", "小芳", "小羊"] as [NSObject]
+        // [NSObject]
+        let array4 = ["老李", "1", "2", 180] as! [NSObject]
+        array3 += array4
+        
+        print(array3)
+    }
+    
+    // MARK: - 数组的容量
+    func demo4() {
+        // 定义一个数组，指定类型是 存放 Int 的数组，但是没有初始化
+//        var array: [Int]
+        
+        // 给数组进行初始化
+//        array = [Int]()
+        
+        // 以上两句代码可以合并成一句
+        var array = [Int]()
+        print("初始容量 \(array.capacity)")
+        
+        for i in 0..<8 {
+            array.append(i)
+            
+            print("\(array) 容量 \(array.capacity)")
+        }
+    }
+    
+    // MARK: - 数组的增/删/改
+    func demo3() {
+        // OC 中数组分 可变NSMutableArray(var) / 不可变 NSArray(let)
+        
+        var array = ["张三", "小芳", "小羊"]
+        
+        // 追加元素
+        array.append("老王")
+        print(array)
+        
+        // 修改，通过下标定位
+        array[0] = "小王"
+        print(array)
+        
+        // 数组越界 - Index out of range
+        //array[5] = "xxx"
+        //print(array)
+        
+        // 删除
+        array.remove(at: 3)
+        print(array)
+        
+        // 删除全部，并且保留空间
+        array.removeAll(keepingCapacity: true)
+        print("\(array) \(array.capacity)")
     }
 
     // MARK: - 数组的遍历

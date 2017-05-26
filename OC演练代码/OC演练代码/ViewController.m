@@ -18,6 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    // 如果初始化指定容量，可以避免插入数据是，重复分配空间，效率会高一点点
+    NSMutableArray *arrayM = [NSMutableArray arrayWithCapacity:10];
+    
     [self demoSwitch];
     
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 40)];
